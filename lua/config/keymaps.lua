@@ -15,8 +15,8 @@ map("n", "<leader>q", "<CMD>q<CR>")
 map("i", "jk", "<ESC>")
 
 -- NeoTree
-map("n", "<leader>e", "<CMD>Neotree toggle<CR>")
-map("n", "<leader>r", "<CMD>Neotree focus<CR>")
+map("n", "<leader>e", "<CMD>:NvimTreeToggle<CR>")
+map("n", "<leader>r", "<CMD>NvimTreeFocus<CR>")
 
 -- New Windows
 map("n", "<leader>o", "<CMD>vsplit<CR>")
