@@ -17,6 +17,9 @@ map("i", "jk", "<ESC>")
 map("n", "<leader>e", "<CMD>:NvimTreeToggle<CR>")
 map("n", "<leader>r", "<CMD>NvimTreeFocus<CR>")
 
+-- GIt Blame
+map("n", "<leader>g", "<CMD>:GitBlameToggle<CR>")
+
 -- New Windows
 map("n", "<leader>o", "<CMD>vsplit<CR>")
 map("n", "<leader>p", "<CMD>split<CR>")
@@ -32,4 +35,3 @@ map("n", "<C-Left>", "<C-w><")
 map("n", "<C-Right>", "<C-w>>")
 map("n", "<C-Up>", "<C-w>+")
 map("n", "<C-Down>", "<C-w>-")
-
