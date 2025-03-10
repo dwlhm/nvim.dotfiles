@@ -1,32 +1,46 @@
--- williamboman/mason.nvim: Portable package manager for Neovim that runs everywhere Neovim runs.
-
 return {
-    "williamboman/mason.nvim",
-    dependencies = {
-        "williamboman/mason-lspconfig.nvim",
-        "WhoIsSethDaniel/mason-tool-installer.nvim",
+    {
+      "williamboman/mason.nvim",
+      build = ":MasonUpdate", -- Update registry saat pertama kali install
+      config = function()
+        require("mason").setup({
+          ui = {
+            border = "rounded"
+          }
+        })
+      end
     },
-    config = function()
-        require("mason").setup()
-
+    {
+      "williamboman/mason-lspconfig.nvim",
+      dependencies = { "williamboman/mason.nvim" },
+      config = function()
         require("mason-lspconfig").setup({
-            automatic_installation = true,
-            ensure_installed = {
-                "cssls",
-                "eslint",
-                "html",
-                "jsonls",
-                "ts_ls",
-                "tailwindcss",
-            },
+          ensure_installed = { "lua_ls", "ts_ls", "volar", "eslint" },
+          automatic_installation = true,
         })
-
-        require("mason-tool-installer").setup({
-            ensure_installed = {
-                "prettier",
-                "stylua", -- lua formatter
-                "eslint_d",
-            },
+      end
+    },
+    {
+      "jay-babu/mason-null-ls.nvim",
+      dependencies = { "williamboman/mason.nvim", "nvimtools/none-ls.nvim" },
+      config = function()
+        require("mason-null-ls").setup({
+          ensure_installed = { "eslint", "prettier" },
+          automatic_installation = true,
         })
-    end,
-}
+      end
+    },
+    {
+      "neovim/nvim-lspconfig",
+      dependencies = { "williamboman/mason-lspconfig.nvim" },
+      config = function()
+        local lspconfig = require("lspconfig")
+        local servers = { "lua_ls", "ts_ls", "volar", "eslint" }
+        
+        for _, server in ipairs(servers) do
+          lspconfig[server].setup({})
+        end
+      end
+    }
+  }
+  
