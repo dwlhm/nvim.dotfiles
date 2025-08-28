@@ -44,7 +44,27 @@ return {
 
     opts.sources = vim.list_extend(opts.sources or {}, {
       b.formatting.biome, -- ✅ formatter
-      biome_diagnostics,  -- ✅ linting
+      b.diagnostics.biome,  -- ✅ linting
+    })
+  end,
+  config = function(_, opts)
+    vim.diagnostic.config({
+      virtual_text = {
+        source = "if_many", 
+        spacing = 4,      
+        prefix = '●',     
+      },
+
+      signs = true, 
+      underline = true,
+
+      float = {
+        source = "always", 
+        border = "rounded", 
+        focusable = false,
+      },
+
+      update_in_insert = false, 
     })
   end,
 }

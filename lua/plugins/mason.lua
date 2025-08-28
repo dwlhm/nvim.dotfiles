@@ -3,7 +3,7 @@ return {
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
   },
-  consfig = function()
+  config = function()
     -- impost mason
     local mason = require("mason")
 

@@ -28,7 +28,7 @@ return {
 
     -- konfigurasi Biome
     lspconfig.jsonls.setup({
-      -- Biome akan mengambil alih linting dan formatting untuk JSON
+      -- Biome will take over linting and formatting
     })
   end,
 }

@@ -8,3 +8,10 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Pindah ke window kanan' })
 vim.keymap.set('n', '<leader>s', ':sp<CR>', { desc = 'Buat split window horizontal' })
 vim.keymap.set('n', '<leader>v', ':vsp<CR>', { desc = 'Buat split window vertikal' })
 vim.keymap.set('n', '<leader>q', '<C-w>q', { desc = 'Tutup window saat ini' })
+
+-- Git Blame
+vim.keymap.set('n', '<leader>g', '<CMD>:Gitsigns blame<CR>', { desc = 'Blame' })
+vim.keymap.set('n', '<leader>gb', '<CMD>:Gitsigns toggle_current_line_blame<CR>', { desc = 'Toggle current line blame' })
+
+-- Keymap untuk menampilkan detail diagnostik di jendela pop-up
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = "Open diagnostic float" })
